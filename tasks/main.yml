@@ -1,0 +1,18 @@
+---
+# zerodowntime.selinux_python/tasks/main.yml
+
+- name: selinux_python | install python selinux modules
+  become: true
+  package:
+    name:
+      - libselinux-python
+      - libsemanage-python
+      - policycoreutils-python
+    state: "{{ selinux_python__package_status }}"
+  register: selinux_python___install
+  until: selinux_python___install is success
+  retries: 3
+  delay: 2
+  when: ansible_os_family == 'RedHat'
+  tags:
+    - selinux::python

@@ -1,0 +1,6 @@
+---
+# zerodowntime.selinux_python/defaults/main.yml
+
+# selinux_python__package_status: string
+# installed packages status
+selinux_python__package_status: present
